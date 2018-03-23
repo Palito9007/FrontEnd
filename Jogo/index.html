@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Bootleg slayer</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="foundation.min.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+</head>
+
+<body>
+
+<div id="app">
+    <section class="row">
+        <div class="small-6 columns">
+            <h1 class="text-center">Palito</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="{width: playerHealth/50 + '%'}">
+                     {{ playerHealth }}                   
+                </div>
+            </div>
+        </div>
+        <div class="small-6 columns">
+            <h1 class="text-center">Padre Gisel</h1>
+            <div class="healthbar">
+                <div 
+                class="healthbar text-center" 
+                style="background-color: grey; margin: 0; color: white;"
+                :style="{width: monsterHealth/100 + '%'}">
+                    {{ monsterHealth }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="row controls" v-if="!gameIsRunning">
+        <div class="small-12 columns">
+            <button id="start-game" @click="startGame">START!</button>
+        </div>
+    </section>
+    <section class="row controls" v-else="gameIsRunning">
+        <div class="small-12 columns">
+            <button id="attack" @click="attack">Chapada</button>
+            <button id="special-attack" @click="specialAttack">Batatada</button>
+            <button id="heal" @click="heal">Poncha</button>
+            <button id="transformar" onclick="animate: shake" @click="transformar">Ficar Bufo</button>
+            <button id="give-up" @click="giveUp">GIVE UP</button>
+        </div>
+    </section>
+    <section class="row log" v-if="turns.length > 0">
+        <div class="small-12 columns">
+            <ul>
+                <li 
+                v-for="turn in turns"
+                :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}">
+                    {{ turn.text }}
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<script src="app.js">
+   
+if(this.playerHealth <= 0){
+    alert(lose.play());
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aula 2</title>
+</head>
+<body class="fundo">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <div id="App">
+        <button @click="valor++">
+            Click Normal
+            <p>{{valor}}</p>
+        </button>
+        <button @click="incrementa(5)">
+            Função
+                <p>{{valor}}</p>
+            </button>
+            <button @MouseMove="incrementa(10)">
+                MouseMove    
+                <p>{{valor}}</p>
+                </button>
+                <button @MouseMove="calculacoordenada">
+                        Calcula Coordenadas
+                        <p>{{x}}</p>
+                        <p>{{y}}</p>
+                        </button>
+        <input v-model = 'nome' @KEYUP.enter="alerta"> 
+        <br> <br> <br> <br> <br>  {{nome}} <br>
+        <input @KEYUP.enter="calculaResultado" v-model="valorResultado"> <p>{{resultado}}</p> 
+         <div :class="{fundo: toggle}">
+        <button @click = "toggle = !toggle">Toggle buton </button>{{toggle}}
+    </div>
+    <p v-if="valor">haha</p>
+    <p v-else>hehe</p>
+    <p v-for="n in 10">{{n}}</p>
+   <div style="color: green">
+       <br> <h2>Texto supostamente verde</h2>
+       
+   </div>
+   <div :style="{ backgroundColor: cor }">
+    <h2>Fundo supostamente amarelo</h2>
+   </div>    
+    </div>
+    
+    <style>
+        .fundo{ background-color: lightsteelblue;
+        }
+    </style> 
+    <script> 
+        new Vue({
+            el:'#App',
+            data: {
+                num: 5,
+                valor: 0,
+                valorResultado: 0,
+                x: 0,
+                y: 0,
+                nome: '',
+                resultado: 'Insira um valor',
+                toggle: false,
+                cor: 'yellow',
+                n: 0,
+            },
+            methods:{
+                calculaResultado: function(){
+                    this.resultado=this.valorResultado<37? alert('Não'):alert('Acertou >:(');
+                },
+                incrementa: function(val) {
+                    this.valor += val;
+                },
+                calculacoordenada: function(event){
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                alerta: function(event){
+                    alert(this.nome);
+                }
+
+            },
+            watch:{
+                contador:function(value){vm.contador=(0,2000)}
+            }
+
+        })
+    </script>
+</body>
+</html>

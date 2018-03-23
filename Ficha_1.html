@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ficha 1</title>
+</head>
+<body>
+    <script src="http://unpkg.com/vue/dist/vue.js"></script>
+<div id="App">
+    <p> {{nome + '  ' + idade}}</p>
+    <p> {{idade*3}}</p>
+    <p> {{random}} </p>
+    
+    <input type="text" v-on:input="nome">
+    <input type="text" v-on:input="idade">
+    <br> <br>
+    <img v-bind:src="imagem" style="width:100px;height:100px">
+    <input type="text" v-on:input="imagem">
+    <script>
+        new Vue({
+            el:'#App',
+            data:{
+                nome: 'Pedro',
+                idade: 19,
+                random: Math.random(),
+                imagem: 'https://www.amodadoflavio.pt/wp-content/uploads/2017/06/poncha-da-madeira-okok-1125x500.jpg'
+            },
+            methods: {
+                defineNome: function(event){
+                    this.nome = event.target.value
+                },
+                defineIdade: function(event){
+                    this.idade = event.target.value
+            },
+        }
+        })
+
+    </script>
+</div>
+
+
+</body>
+</html>

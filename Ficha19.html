@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+ <title>Exercício 7</title>
+</head>
+<body>
+ <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+ <div id="exercicio7"></div>
+    <button @click="toggle = !toggle">botão</button>
+    <div v-if="toggle">Texto</div>
+    </div>
+    <transition enter-active-class="animated bounce" leave-active-class="animated shake">
+        <div v-if="toggle">Texto Test</div>
+        </transition>
+    <style>
+        .desvanecer-enter {
+        /* estado inicial da animação */
+        opacity: 0;
+        } 
+        .desvanecer-enter-active {
+        /* animação em curso */
+        transition: opacity 3s;
+        }
+        .desvanecer-leave {
+        /* estado final da animação */
+        opacity: 1;
+        }
+        .desvanecer-leave-active {
+        /* animação em curso até estado inicial*/
+        transition: opacity 3s;
+        opacity: 0;
+        } </style>
+        
+     <script>
+ new Vue({
+ el: '#exercicio7',
+ data: {
+ toggle: true,
+ } })
+
+ </script>
+</body>
+</html>
